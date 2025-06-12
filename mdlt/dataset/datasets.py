@@ -490,9 +490,14 @@ class VLCS(MultipleEnvironmentImageFolder):
     MANY_SHOT_THRES = 100
     FEW_SHOT_THRES = 20
 
+    # If the environment variable ``MDLT_CSV_SUFFIX`` is set, the dataset will
+    # load ``VLCS${MDLT_CSV_SUFFIX}.csv`` instead of the default CSV.
+
     def __init__(self, root, split, hparams):
         self.dir = os.path.join(root, "VLCS")
-        self.df = pd.read_csv(os.path.join(self.dir, "VLCS.csv"))
+        csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
+        csv_name = f"VLCS{csv_suffix}.csv"
+        self.df = pd.read_csv(os.path.join(self.dir, csv_name))
         # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/VLCS.csv")
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
 
@@ -501,10 +506,13 @@ class PACS(MultipleEnvironmentImageFolder):
     ENVIRONMENTS = ["A", "C", "P", "S"]
     MANY_SHOT_THRES = 100
     FEW_SHOT_THRES = 20
+    # Use ``MDLT_CSV_SUFFIX`` to select ``PACS${MDLT_CSV_SUFFIX}.csv``
 
     def __init__(self, root, split, hparams):
         self.dir = os.path.join(root, "PACS")
-        self.df = pd.read_csv(os.path.join(self.dir, "PACS.csv"))
+        csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
+        csv_name = f"PACS{csv_suffix}.csv"
+        self.df = pd.read_csv(os.path.join(self.dir, csv_name))
         # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/PACS.csv")
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
 
@@ -515,10 +523,13 @@ class DomainNet(MultipleEnvironmentImageFolder):
     ENVIRONMENTS = ["clip", "info", "paint", "quick", "real", "sketch"]
     MANY_SHOT_THRES = 100
     FEW_SHOT_THRES = 20
+    # When ``MDLT_CSV_SUFFIX`` is set, ``DomainNet${MDLT_CSV_SUFFIX}.csv`` is used
 
     def __init__(self, root, split, hparams):
         self.dir = os.path.join(root, "domain_net")
-        self.df = pd.read_csv(os.path.join(self.dir, "DomainNet.csv"))
+        csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
+        csv_name = f"DomainNet{csv_suffix}.csv"
+        self.df = pd.read_csv(os.path.join(self.dir, csv_name))
         # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/DomainNet.csv")
 
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
@@ -528,10 +539,13 @@ class OfficeHome(MultipleEnvironmentImageFolder):
     ENVIRONMENTS = ["A", "C", "P", "R"]
     MANY_SHOT_THRES = 60
     FEW_SHOT_THRES = 20
+    # Load ``OfficeHome${MDLT_CSV_SUFFIX}.csv`` when the environment variable is set
 
     def __init__(self, root, split, hparams):
         self.dir = os.path.join(root, "office_home")
-        self.df = pd.read_csv(os.path.join(self.dir, "OfficeHome.csv"))
+        csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
+        csv_name = f"OfficeHome{csv_suffix}.csv"
+        self.df = pd.read_csv(os.path.join(self.dir, csv_name))
         # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/OfficeHome.csv")
         
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
@@ -541,9 +555,12 @@ class TerraIncognita(MultipleEnvironmentImageFolder):
     ENVIRONMENTS = ["L100", "L38", "L43", "L46"]
     MANY_SHOT_THRES = 100
     FEW_SHOT_THRES = 25
+    # ``MDLT_CSV_SUFFIX`` selects ``TerraIncognita${MDLT_CSV_SUFFIX}.csv``
 
     def __init__(self, root, split, hparams):
         self.dir = os.path.join(root, "terra_incognita")
-        self.df = pd.read_csv(os.path.join(self.dir, "TerraIncognita.csv"))
+        csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
+        csv_name = f"TerraIncognita{csv_suffix}.csv"
+        self.df = pd.read_csv(os.path.join(self.dir, csv_name))
         # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/TerraIncognita.csv")
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
