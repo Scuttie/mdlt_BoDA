@@ -498,7 +498,6 @@ class VLCS(MultipleEnvironmentImageFolder):
         csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
         csv_name = f"VLCS{csv_suffix}.csv"
         self.df = pd.read_csv(os.path.join(self.dir, csv_name))
-        # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/VLCS.csv")
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
 
 
@@ -513,7 +512,6 @@ class PACS(MultipleEnvironmentImageFolder):
         csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
         csv_name = f"PACS{csv_suffix}.csv"
         self.df = pd.read_csv(os.path.join(self.dir, csv_name))
-        # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/PACS.csv")
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
 
 
@@ -530,7 +528,6 @@ class DomainNet(MultipleEnvironmentImageFolder):
         csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
         csv_name = f"DomainNet{csv_suffix}.csv"
         self.df = pd.read_csv(os.path.join(self.dir, csv_name))
-        # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/DomainNet.csv")
 
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
 
@@ -546,7 +543,6 @@ class OfficeHome(MultipleEnvironmentImageFolder):
         csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
         csv_name = f"OfficeHome{csv_suffix}.csv"
         self.df = pd.read_csv(os.path.join(self.dir, csv_name))
-        # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/OfficeHome.csv")
         
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
 
@@ -562,5 +558,4 @@ class TerraIncognita(MultipleEnvironmentImageFolder):
         csv_suffix = os.environ.get("MDLT_CSV_SUFFIX", "")
         csv_name = f"TerraIncognita{csv_suffix}.csv"
         self.df = pd.read_csv(os.path.join(self.dir, csv_name))
-        # self.df = pd.read_csv("/home/hyunggyu/imbalance/multi-domain-imbalance/mdlt/dataset/split/TerraIncognita.csv")
         super().__init__(self.dir, self.df, split, hparams['data_augmentation'], hparams)
