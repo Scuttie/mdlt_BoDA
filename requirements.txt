@@ -1,0 +1,10 @@
+numpy
+pandas
+pillow
+torch
+torchvision
+scikit-learn
+matplotlib
+tqdm
+gdown
+tensorboard_logger
